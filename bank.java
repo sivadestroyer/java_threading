@@ -17,7 +17,8 @@ class banking{
         }
     }
 }
-class access extends Thread{
+class access implements Runnable{
+    
     private banking occount;
     private double money;
     private boolean choice;
@@ -42,8 +43,10 @@ public class bank {
         banking c = new banking();
         access t1 = new access(c,true,1000000);
         access t2 = new access(c,false,100000);
-        t1.start();
-        t2.start();
+        Thread t1_ = new Thread(t1);
+        Thread t2_ = new Thread(t2);
+        t1_.start();
+        t2_.start();
 
 
     }
